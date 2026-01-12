@@ -212,6 +212,72 @@ body {
     }
 }
 
+/* Extra small screens - compact button */
+@media (max-width: 395px) {
+    .mobile-cta-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.7rem;
+        margin-right: 0.25rem;
+        white-space: nowrap;
+        letter-spacing: -0.3px;
+    }
+    
+    .mobile-cta-btn .fa-calendar-check {
+        display: none !important; /* Hide icon on very small screens */
+    }
+    
+    .brand-logo {
+        height: 32px;
+    }
+    
+    .navbar {
+        padding: 0.6rem 0;
+    }
+    
+    .navbar-toggler {
+        padding: 0.2rem 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Ultra small screens - even more compact */
+@media (max-width: 359px) {
+    .mobile-cta-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+        margin-right: 0.2rem;
+        letter-spacing: 0px;
+    }
+    
+    /* Change button text to just "Quote" */
+    .mobile-cta-btn .btn-text {
+        font-size: 0;
+    }
+    
+    .mobile-cta-btn .btn-text::before {
+        content: "Quote";
+        font-size: 0.7rem;
+    }
+    
+    .brand-logo {
+        height: 30px;
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar-toggler {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.95rem;
+    }
+    
+    .navbar .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
 /* ========================================
    HERO SECTION
    ======================================== */
@@ -1833,6 +1899,21 @@ body {
     font-weight: 700;
     margin: 0;
     width: 100%;
+}
+
+/* Mobile adjustments for modal heading */
+@media (max-width: 576px) {
+    .consultation-modal .modal-title {
+        font-size: 1.3rem;
+    }
+    
+    .consultation-modal .modal-header {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .consultation-modal .modal-body {
+        padding: 1.5rem;
+    }
 }
 
 .consultation-modal .btn-close {
