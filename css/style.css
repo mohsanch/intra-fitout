@@ -171,6 +171,27 @@ body {
     font-size: 0.9rem;
 }
 
+/* Mobile CTA Button (visible on mobile navbar) */
+.mobile-cta-btn {
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    transition: var(--transition);
+    white-space: nowrap;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+.mobile-cta-btn:hover {
+    background: linear-gradient(135deg, #f0c14b 0%, #d4af37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    color: var(--color-black);
+}
+
 /* Responsive navbar button */
 @media (max-width: 991px) {
     .navbar-collapse {
@@ -184,18 +205,6 @@ body {
     
     .navbar-nav {
         flex-direction: column;
-    }
-    
-    .navbar-cta {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    
-    .navbar .btn-primary {
-        width: 100%;
-        text-align: center;
-        padding: 0.8rem 1.5rem;
     }
     
     .nav-item {
