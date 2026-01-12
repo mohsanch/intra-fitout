@@ -64,7 +64,7 @@ body {
 .navbar {
     padding: 1.5rem 0;
     transition: var(--transition);
-    background: transparent;
+    background: rgba(0, 0, 0, 0.95) !important;
 }
 
 .navbar.scrolled {
@@ -134,13 +134,13 @@ body {
 
 /* Logo Styling */
 .brand-logo {
-    height: 50px;
+    height: 70px;
     width: auto;
     transition: var(--transition);
 }
 
 .navbar-scrolled .brand-logo {
-    height: 40px;
+    height: 55px;
 }
 
 /* Navbar Quote Button */
@@ -227,7 +227,7 @@ body {
     }
     
     .brand-logo {
-        height: 32px;
+        height: 45px;
     }
     
     .navbar {
@@ -260,7 +260,7 @@ body {
     }
     
     .brand-logo {
-        height: 30px;
+        height: 42px;
     }
     
     .navbar {
@@ -318,6 +318,25 @@ body {
     padding: 2rem;
 }
 
+/* Responsive hero content padding for small screens */
+@media (max-width: 767px) {
+    .hero-content {
+        padding-top: 100px; /* Account for fixed navbar */
+    }
+}
+
+@media (max-width: 395px) {
+    .hero-content {
+        padding-top: 90px; /* Slightly less for very small screens */
+    }
+}
+
+@media (max-width: 359px) {
+    .hero-content {
+        padding-top: 85px; /* Even less for ultra small screens */
+    }
+}
+
 .hero-title {
     font-family: var(--font-heading);
     font-size: 4.5rem;
@@ -364,6 +383,41 @@ body {
 
 .hero-cta {
     margin-top: 2rem;
+}
+
+/* Responsive hero typography */
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .hero-experience {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 395px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
 }
 
 /* ========================================
