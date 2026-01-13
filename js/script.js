@@ -186,7 +186,20 @@ document.addEventListener('DOMContentLoaded', function () {
             initialCountry: "ae", // Default to UAE
             preferredCountries: ["ae", "sa", "qa", "kw", "bh", "om"],
             separateDialCode: true,
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+            autoPlaceholder: "aggressive", // Show country-specific placeholder
+            formatOnDisplay: true,
+            nationalMode: false,
+            countrySearch: true, // Enable search in country dropdown
+            i18n: {
+                searchPlaceholder: "Search countries..."
+            },
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/js/utils.js"
+        });
+
+        // Update placeholder when country changes
+        phoneInput.addEventListener('countrychange', function () {
+            // The autoPlaceholder option handles this automatically in v23
+            // But we can add custom logic here if needed
         });
     }
 
