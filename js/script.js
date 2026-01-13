@@ -5,6 +5,88 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // ========================================
+    // TOAST NOTIFICATION SYSTEM
+    // ========================================
+    function showToast(message, type = 'info', duration = 5000) {
+        
+        const container = document.getElementById('toast-container');
+    
+
+        if (!container) {
+            console.error('Toast container not found!');
+            return;
+        }
+
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+
+        // Define icons for different types
+        const icons = {
+            success: 'fa-check-circle',
+            error: 'fa-exclamation-circle',
+            warning: 'fa-exclamation-triangle',
+            info: 'fa-info-circle'
+        };
+
+        // Define titles for different types
+        const titles = {
+            success: 'Success!',
+            error: 'Error!',
+            warning: 'Warning!',
+            info: 'Information'
+        };
+
+        // Build toast HTML
+        toast.innerHTML = `
+            <i class="fas ${icons[type]} toast-icon"></i>
+            <div class="toast-content">
+                <div class="toast-title">${titles[type]}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="toast-progress"></div>
+        `;
+
+        // Add to container
+        container.appendChild(toast);
+       
+
+        // Close button functionality
+        const closeBtn = toast.querySelector('.toast-close');
+        closeBtn.addEventListener('click', () => {
+            removeToast(toast);
+        });
+
+        // Auto remove after duration
+        const timeout = setTimeout(() => {
+            removeToast(toast);
+        }, duration);
+
+        // Store timeout for manual close
+        toast.dataset.timeout = timeout;
+    }
+
+    function removeToast(toast) {
+        // Clear timeout if exists
+        if (toast.dataset.timeout) {
+            clearTimeout(parseInt(toast.dataset.timeout));
+        }
+
+        // Add hiding animation
+        toast.classList.add('toast-hiding');
+
+        // Remove from DOM after animation
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.parentElement.removeChild(toast);
+            }
+        }, 400);
+    }
+
+    // ========================================
     // NAVBAR SCROLL EFFECT
     // ========================================
     const navbar = document.getElementById('mainNav');
@@ -203,6 +285,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Test toast when modal is shown
+    const modalElement = document.getElementById('consultationModal');
+    if (modalElement) {
+        modalElement.addEventListener('shown.bs.modal', function () {
+            
+            // Test toast to verify it's working
+            // setTimeout(() => {
+            //     showToast('Welcome! Please fill out the form below.', 'info', 3000);
+            // }, 500);
+        });
+    }
+
+
     // Handle form submission
     const consultationForm = document.getElementById('consultationForm');
 
@@ -213,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Validate phone number
             if (iti && !iti.isValidNumber()) {
                 phoneInput.classList.add('is-invalid');
-                alert('Please enter a valid phone number');
+                showToast('Please enter a valid phone number for the selected country', 'error');
                 return;
             } else {
                 phoneInput.classList.remove('is-invalid');
@@ -228,10 +323,10 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // Here you would typically send the data to your server
-            console.log('Form submitted:', formData);
+          
 
             // Show success message
-            alert('Thank you! We will contact you soon.');
+            showToast('Thank you! We will contact you soon.', 'success');
 
             // Close modal
             const consultationModal = bootstrap.Modal.getInstance(document.getElementById('consultationModal'));
@@ -244,6 +339,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
-    console.log('INTRA FITOUT - Website Loaded Successfully');
 });
