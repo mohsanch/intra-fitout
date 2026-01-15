@@ -316,6 +316,7 @@ body {
     position: relative;
     z-index: 2;
     padding: 2rem;
+    padding-top: 120px; /* Account for fixed navbar on all screen sizes */
 }
 
 /* Responsive hero content padding for small screens */
